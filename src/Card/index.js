@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Card = () => {
-    return (
+const Card = ({ city }) => {
+    console.log('city', {city});
+    return ( 
         <div className="card-list">
             <div className="card-info">
                 <img className="card-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="icon"/>
-                <div className="title">New York</div>
+                <div className="title">{city}</div>
                 <div className="description">Cloudy</div>
                 <div className="temperature">20</div>
             </div>
