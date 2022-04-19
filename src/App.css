@@ -1,18 +1,36 @@
-body {
+* {
     margin: 0;
+    padding: 0;
 }
 
-.container-input {
+        /* CONTAINER */
+.container {
     background-color: #d8d8d8;
     height: 100vh;
-    padding: 20px 100px 0 30px;
 }
+
+
+.container-card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+
+
+        /* CONTAINER STYLES END */
+
+
+
+        /* CITY INPUT */
 
 .city-input {
     display: flex;
+    padding: 20px 100px 0 30px;
     height: 50px;
     border-radius: 12px;
-    box-shadow: 3px 3px 12px 1px rgba(0,0,0,0.25);
+    margin-bottom: 40px;
+
 }
 
 .city-input-text {
@@ -29,13 +47,62 @@ body {
 
 .city-add-button {
     width: 10%;
+    min-width: 20px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    font-size: 50px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 .city-add-button:hover {
     background-color: whitesmoke;
     color: rgba(18, 31, 99, 0.93);
+}
+
+            /* CITY INPUT STYLES END */
+
+            /* CARD LIST */
+
+.card-list {
+    width: 200px;
+    height: fit-content;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #3A8AC0;
+    font-size: 14px;
+    margin: 0 0 15px 30px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.description {
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.temperature {
+    margin-top: 12px;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.temperature:after {
+    content: "°";
+}
+
+.additional-info {
+    margin-top: 12px;
+}
+
+.additional-info > div {
+    margin: 4px;
 }
