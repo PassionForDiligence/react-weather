@@ -1,18 +1,22 @@
-import React from "react";
-import { useState }  from "react";
+import React, { useState,useRef } from "react";
 
-const Input = () => {
+
+const Input = ({setCitiesList}) => {
     const [inputValue, setInputValue] = useState('');
+    const inputRef = useRef(null);
 
+    const handleOnClick = () => {
+        setCitiesList((currentArray) => [...currentArray, inputValue]);
+        setInputValue('');
+        inputRef.current.focus();
+    }
     const handleOnChange = (event) => {
         setInputValue(event.target.value);
     }
-    const handleOnClick = (value) => {
-        console.log('handleOnClick');
-    }
+
     return (
         <div className="city-input">
-            <input className="city-input-text" type="text" value={inputValue} autoComplete="disabled" placeholder="Brest" onChange={handleOnChange} />
+            <input className="city-input-text" value={inputValue} onChange={handleOnChange} ref={inputRef}/>
             <button className="city-add-button" onClick={handleOnClick}>+</button>
         </div>
     );
