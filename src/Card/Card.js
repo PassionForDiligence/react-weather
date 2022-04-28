@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+
+import { API_KEY } from "../settings";
 
 const Card = ({ city }) => {
-    console.log('city', {city});
-    return ( 
+    const [data, seData] = useState(null);
+    useEffect( () => {
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}')
+    }, []);
+    return (
         <div className="card-list">
             <div className="card-info">
                 <img className="card-icon" src="https://openweathermap.org/img/wn/10d@2x.png" alt="icon"/>
