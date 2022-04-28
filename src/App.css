@@ -96,10 +96,6 @@
     font-weight: 500;
 }
 
-.temperature:after {
-    content: "°";
-}
-
 .additional-info {
     margin-top: 12px;
 }

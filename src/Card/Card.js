@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
 
-import { API_KEY } from "../settings";
+import  API_KEY from "../settings";
 
 const Card = ({ city }) => {
-    const [data, seData] = useState(null);
+    const [data, setData] = useState(null);
     useEffect( () => {
-        fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}')
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
+        .then(res => res.json())
+        .then(setData);
     }, []);
+    console.log('data', data);
+
     return (
         <div className="card-list">
             <div className="card-info">
