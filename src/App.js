@@ -1,12 +1,13 @@
+import React from "react";
+
 import './App.css';
-import { useState }  from "react";
 
 import Input from './Input/Input';
 import CardList from "./Card List/CardList";
+import {useCitiesList} from "./hooks/useCitiesList";
 
 const App = () => {
-    const [citiesList, setCitiesList] = useState([]);
-
+    const [citiesList, setCitiesList] = useCitiesList();
     return (
       <div className="container">
         <Input setCitiesList = {setCitiesList}/>

@@ -1,16 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {memo} from 'react';
 
-import  API_KEY from "../settings";
+import {useWeather} from "../hooks/useWeather";
 
-const Card = ({ city }) => {
-    const [data, setData] = useState(null);
-    useEffect( () => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
-        .then(res => res.json())
-        .then(setData);
-    }, [city]);
+const Card = memo(({ city }) => {
+    const data = useWeather(city);
     console.log('data', data);
-    if (!data) return null;
+    if (!data) {
+        return null;
+    }
 
     const { name, weather, main } = data;
     const { description, icon } = weather[0];
@@ -30,6 +27,6 @@ const Card = ({ city }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Card;
