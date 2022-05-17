@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import API_KEY from "../settings";
+import {API_KEY} from "../settings";
 
 export const useWeather = (city) => {
     const [data, setData] = useState(null);

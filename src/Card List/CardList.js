@@ -1,11 +1,11 @@
 import React from 'react';
 import Card from '../Card/Card';
 
-const CardList = ({ citiesList }) => {
+const CardList = ({ citiesList, dispatch }) => {
     return (
         <div className="container-card-list">
             {
-                citiesList.map(city => <Card  key={city} city = {city} />)
+                citiesList.map(city => <Card  key={city} city = {city} dispatch={dispatch}/>)
             }
         </div>
     );

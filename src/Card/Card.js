@@ -2,7 +2,7 @@ import React, {memo} from 'react';
 
 import {useWeather} from "../hooks/useWeather";
 
-const Card = memo(({ city }) => {
+const Card = memo(({ city, dispatch }) => {
     const data = useWeather(city);
     console.log('data', data);
     if (!data) {
@@ -13,8 +13,17 @@ const Card = memo(({ city }) => {
     const { description, icon } = weather[0];
     const { temp, humidity, feels_like} = main;
 
+    const handleOnClick = () => {
+        dispatch({
+            type: 'DELETE_CITY',
+            payload: city,
+        })
+    };
     return (
         <div className="card-list">
+            <div className="container-delete-button">
+                <button className="city-delete-button" onClick={handleOnClick}>X</button>
+            </div>
             <div className="card-info">
                 <img className="card-icon" src={`https://openweathermap.org/img/wn/${icon}@2x.png`} alt="icon"/>
                 <div className="title">{name}</div>
