@@ -20,16 +20,44 @@
 .container-delete-button {
     display: flex;
     justify-content: flex-end;
+    align-content: space-between;
 }
 
 .city-delete-button {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
     background-color: #fff;
-    border: none;
+    border: 1px solid #99ccd9;
+    margin-left: 5px;
 }
 
+.city-delete-button:hover {
+    background-color: #f6f6f6;
+    transition-duration: 0.15s;
+}
+
+.city-delete-button:active {
+    border: 1.1px solid #a4bdbd;
+}
+
+.city-edit-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #99ccd9;
+    margin-left: 5px;
+}
+
+.city-edit-button:hover {
+    background-color: #f6f6f6;
+    transition-duration: 0.15s;
+}
+
+.city-edit-button:active {
+    border: 1.1px solid #a4bdbd;
+}
 
 
         /* CONTAINER STYLES END */

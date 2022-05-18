@@ -1,37 +1,46 @@
-import React, { useState,useRef} from "react"; //deleted useMemo
+import React, { useRef} from "react"; //deleted useMemo
 
-const Input = ({ dispatch }) => {
-    const [inputValue, setInputValue] = useState('');
-    const [someValue, setSomeValue] = useState(0);
+const Input = ({ dispatch, inputValue }) => {
     const inputRef = useRef(null);
 
-    const handleOnClick = () => {
+    const handleOnAdd = () => {
         if (inputValue.length) {
             dispatch({
                 type: 'ADD_CITY',
                 payload: inputValue,
             })
-            setInputValue('');
+            dispatch({
+                type: 'RESET_INPUT_VALUE',
+            })
             inputRef.current.focus();
         }
     }
+
+    const handleOnDone = () => {
+        if (inputValue.length) {
+            dispatch({
+                type: 'EDIT_CITY_DONE',
+                payload: inputValue,
+            })
+            dispatch({
+                type: 'RESET_INPUT_VALUE',
+            })
+            inputRef.current.focus();
+        }
+    }
+
     const handleOnChange = (event) => {
-        setInputValue(event.target.value);
+        dispatch({
+            type: 'CHANGE_INPUT_VALUE',
+            payload: event.target.value,
+        })
     }
-    
-    const onSomeCLick = () => {
-        setSomeValue((someValue) => someValue + 1);
-    }
-  //  const oldInputValue = useMemo(() => `${inputValue}_${Math.random()}`, [inputValue]);
-  //  console.log('input value', inputValue);
-  //  console.log('old input value', oldInputValue);
-  //  console.log('from render', `${inputValue}_${Math.random()}`);
-    console.log('some value', someValue);
 
     return (
         <div className="city-input">
-            <input className="city-input-text" onClick={onSomeCLick} value={inputValue} onChange={handleOnChange} ref={inputRef} placeholder="write the city"/>
-            <button className="city-add-button" onClick={handleOnClick}>+</button>
+            <input className="city-input-text" value={inputValue} onChange={handleOnChange} ref={inputRef} placeholder="write the city"/>
+            <button className="city-add-button" onClick={handleOnAdd}>+</button>
+            <button className="city-add-button" onClick={handleOnDone}>done</button>
         </div>
     );
 };
